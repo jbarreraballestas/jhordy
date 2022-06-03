@@ -26,9 +26,9 @@
                     <th>{{__('ACTIONS')}}</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="list-items">
                 @foreach ($items as $item)
-                    <tr>
+                    <tr class="item" data-id="{{$item->id}}">
                         <th>{{$item->id}}</th>
                         <th>{{$item->name}}</th>
                         <th>{{$item->order}}</th>
@@ -40,4 +40,23 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        const sortable = new Sortable.default(document.getElementById('list-items'),{
+            draggable: 'tr'
+        })
+
+        sortable.on('sortable:start',()=>{
+            // console.log('start');
+        })
+        sortable.on('sortable:sorted',()=>{
+            // console.log('sorted');
+        })
+        sortable.on('sortable:stop',()=>{
+            setTimeout(() => {
+                items = $('.item')
+                console.log(items);
+            }, 100);
+        })
+    </script>
 </x-app-layout>
