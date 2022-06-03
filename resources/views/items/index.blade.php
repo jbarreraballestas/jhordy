@@ -6,7 +6,11 @@
 
         <div class="form-input">
             <div class="mb-3">
-
+                <label for="name">{{__('NAME')}}</label>
+                <input type="text" max="255" name="name" id="name" class="form-control">
+                @error('name')
+                    <p class="mb-0 text-danger">{{$message}}</p>
+                @enderror
             </div>
         </div>
         <button type="submit" class="btn btn-success fw-bold text-white mb-3">{{__('Save')}}</button>
@@ -19,6 +23,7 @@
                     <th>{{__('ID')}}</th>
                     <th>{{__('NAME')}}</th>
                     <th>{{__('ORDER')}}</th>
+                    <th>{{__('ACTIONS')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,6 +32,9 @@
                         <th>{{$item->id}}</th>
                         <th>{{$item->name}}</th>
                         <th>{{$item->order}}</th>
+                        <th>
+                            <a href="{{route('items.edit',$item->id)}}">{{__('Edit Item')}}</a>
+                        </th>
                     </tr>
                 @endforeach
             </tbody>

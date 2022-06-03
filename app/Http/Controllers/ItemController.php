@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ItemRequest;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ItemController extends Controller
 {
@@ -37,7 +38,9 @@ class ItemController extends Controller
      */
     public function store(ItemRequest $request)
     {
-        //
+        $order = Item::get()->max('order')+1;
+        Item::create(array_merge($request->all(),['order'=>$order]));
+        return redirect()->route('items.index')->with('success','The item was created successfull!');
     }
 
     /**
@@ -59,7 +62,7 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        return view('items.edit',compact('item'));
     }
 
     /**
@@ -71,7 +74,13 @@ class ItemController extends Controller
      */
     public function update(Request $request, Item $item)
     {
-        //
+        if ($request->name != $item->name && Item::where('name',$request->name)->first()) {
+
+            return redirect()->route('items.index')->withErrors(['The item '.$request->name.' really exists!']);
+        }
+        $item->update($request->all());
+        return redirect()->route('items.index')->with('success','The item was updated successfull!');
+
     }
 
     /**
