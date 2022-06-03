@@ -16,7 +16,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::all();
+        $items = Item::all()->sortBy('order');
         return view('items.index',compact('items'));
     }
 
@@ -92,5 +92,10 @@ class ItemController extends Controller
     public function destroy(Item $item)
     {
         //
+    }
+
+    public function reorder(Request $request){
+        return 'in controller';
+        dd($request);
     }
 }

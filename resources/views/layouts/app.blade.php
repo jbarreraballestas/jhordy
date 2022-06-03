@@ -8,7 +8,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/draggable/1.0.0-beta.12/sortable.js" integrity="sha512-kd2txgI5sC52J5qbOW5apZGC/ngJwBlDlKJVPCcbLN7+UtocciDTNzAbgxy9gZf906V/yt0AnYtsOSv8gGPSEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @livewireStyles
     <script src="{{ mix('js/libs.js') }}"></script>
     <script src="{{ mix('js/app.js') }}" defer></script>
