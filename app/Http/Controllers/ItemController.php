@@ -95,7 +95,13 @@ class ItemController extends Controller
     }
 
     public function reorder(Request $request){
-        return 'in controller';
-        dd($request);
+
+        foreach ($request->reorder as $i) {
+            $id = $i['id'];
+            $order = $i['order'];
+            $item = Item::find($id);
+            $item->update(['order'=>$order]);
+        }
+        return 'success';
     }
 }

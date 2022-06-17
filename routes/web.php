@@ -29,3 +29,4 @@ Route::middleware([
 
 
 Route::resource('items', ItemController::class);
+Route::post('items/reorder', [ItemController::class,'reorder'])->name('items.reorder');

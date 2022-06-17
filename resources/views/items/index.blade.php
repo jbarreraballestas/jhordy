@@ -55,6 +55,18 @@
                     })
                 })
                 console.log(data);
+
+                $.ajax({
+                    type: "post",
+                    url: "{{route('items.reorder')}}",
+                    data: {
+                        reorder: data,
+                        _token: '{{csrf_token()}}'
+                    },
+                    success: function (msg) {
+                        console.log("Reorder: "+msg);
+                    }
+                });
             },
         });
 
