@@ -11,10 +11,12 @@
     @livewireStyles
     <script src="{{ mix('js/libs.js') }}"></script>
     <script src="{{ mix('js/app.js') }}" defer></script>
+    {{-- <script src="{{ mix('js/echo.js') }}" defer></script> --}}
+    {!! ReCaptcha::htmlScriptTagJsApi() !!}
 </head>
 
 <body class="font-sans antialiased bg-light">
-    <x-jet-banner />
+    {{-- <x-jet-banner /> --}}
     @livewire('navigation-menu')
     @isset($header)
         <header class="d-flex py-3 bg-white shadow-sm border-bottom">

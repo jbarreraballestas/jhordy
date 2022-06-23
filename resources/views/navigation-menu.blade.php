@@ -18,6 +18,9 @@
                 <x-jet-nav-link href="{{ route('items.index') }}" :active="request()->routeIs('items.index')">
                     {{ __('Items') }}
                 </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('contacto.create') }}" :active="request()->routeIs('contacto.create')">
+                    {{ __('Contact') }}
+                </x-jet-nav-link>
             </ul>
 
             <!-- Right Side Of Navbar -->

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 /*
@@ -29,4 +30,5 @@ Route::middleware([
 
 
 Route::resource('items', ItemController::class);
+Route::resource('contacto', ContactoController::class);
 Route::post('items/reorder', [ItemController::class,'reorder'])->name('items.reorder');
