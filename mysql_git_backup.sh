@@ -7,7 +7,12 @@ directory=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd -P 
 filename='.env'
 backupdir='backup'
 cd $directory
-
+if [ -d "$backupdir" ]; then
+    echo -e "${GREEN}Leyendo la base de datos.${ENDCOLOR}"
+else
+    echo -e "${RED}Directorio '$backupdir' no existe, será creado.${ENDCOLOR}"
+    mkdir $backupdir
+fi
 
 if [[ -f "$filename" ]]; then
     while read line; do
@@ -23,7 +28,7 @@ if [[ -f "$filename" ]]; then
     done < $filename
 
     if test -z "$db" & test -z "$un" & test -z "$pw"; then
-        echo "Error leyendo los datos"
+        echo -e "${RED}Error leyendo los datos.${ENDCOLOR}"
     else
         if [ -d "$backupdir" ]; then
             pw=${pw//\"/}
